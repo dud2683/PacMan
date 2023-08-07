@@ -7,4 +7,9 @@ CMakeFiles/*
 *.vcxproj
 *.vcxproj.filters
 cmake_install.cmake
+*.tlog
+*.user
+bin/*
+x64/*
+*.dir/*
 
