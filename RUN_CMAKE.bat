@@ -1,2 +1,2 @@
-cmake -S src -B build
+cmake ./
 PAUSE
