@@ -12,6 +12,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: premake
-    shell: cmd
-    run: PREMAKE.bat
+      run: PREMAKE.bat
