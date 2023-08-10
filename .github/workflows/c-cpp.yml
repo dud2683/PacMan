@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: premake
-      run: PREMAKE.bat
+      run: cmd /c "PREMAKE.bat"
