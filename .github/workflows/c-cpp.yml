@@ -18,5 +18,4 @@ jobs:
       echo "${GITHUB_WORKSPACE}"
       dir
       
-      shell: cmd
       
