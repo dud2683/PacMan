@@ -14,4 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: premake
-      run: ${GITHUB_WORKSPACE}\\PREMAKE.bat
+      run: 
+      echo ${GITHUB_WORKSPACE}
+      dir
+      
+      shell: cmd
+      
