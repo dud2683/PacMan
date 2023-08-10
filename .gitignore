@@ -3,4 +3,5 @@ _bin/*
 _int-bin/*
 *.vcxproj
 *.vcxproj.user
+*.vcxproj.filters
 *.sln
