@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: premake
-      run: PacMan/PREMAKE.bat
+      run: ${GITHUB_WORKSPACE}/PREMAKE.bat
