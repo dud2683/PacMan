@@ -18,9 +18,10 @@ project "PacMan"
 		"src/ThirdParties/glfw-3.3.8/lib-vc2022"
 	}
 	links{
-		"glfw3.lib"
+		"glfw3.lib",
+		"opengl32.lib"
 	}
-	files { "src/**.h", "src/**.cpp", "src/**.txt" }
+	files { "src/**.h", "src/**.cpp", "src/**.c", "src/**.txt" }
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
