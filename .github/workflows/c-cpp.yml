@@ -14,8 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: premake
-      run: |
-      echo ${GITHUB_WORKSPACE}
+      run: echo ${GITHUB_WORKSPACE}
       dir
       
       shell: cmd
