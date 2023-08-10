@@ -14,4 +14,4 @@ jobs:
     steps:
     - name: premake
     shell: cmd
-      run: PREMAKE.bat
+    run: PREMAKE.bat
