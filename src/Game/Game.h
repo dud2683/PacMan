@@ -5,7 +5,7 @@
 
 class Game {
 public:
-	Game(Renderer* renderer);
+	Game();
 	void Update(std::chrono::nanoseconds);
 
 private:
@@ -13,5 +13,5 @@ private:
 	void Render();
 
 	Ghost _ghosts;
-	const Renderer* _renderer;
+	const std::unique_ptr<Renderer> _renderer;
 };

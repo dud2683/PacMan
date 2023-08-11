@@ -11,12 +11,13 @@
 #include <string>
 #include <assert.h>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <memory>
 #include <chrono>
 
 
-#define DL_INFO(x) spdlog::info(x)
-#define DL_TRACE(x) spdlog::trace(x)
-#define DL_WARN(x) spdlog::warn(x)
-#define DL_ERROR(x) spdlog::error(x)
+#define DL_INFO(x)	SPDLOG_INFO(x)
+#define DL_TRACE(x)	SPDLOG_TRACE(x)
+#define DL_WARN(x)	SPDLOG_WARN(x)
+#define DL_ERROR(x) SPDLOG_ERROR(x)

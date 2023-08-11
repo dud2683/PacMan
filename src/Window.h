@@ -16,8 +16,7 @@ public:
 
 private:
 	GLFWwindow* _glfwWnd = nullptr;
-	Renderer _renderer;
-	Game _game;
+	std::unique_ptr<Game> _game = nullptr;
 	static constexpr int _resolutionMultiplier = 2;
 	static constexpr int _baseWidth = 224;
 	static constexpr int _baseHeight = 288;

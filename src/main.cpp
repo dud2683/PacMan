@@ -4,11 +4,11 @@
 
 
 int main() {
-	spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
+	spdlog::set_pattern(" [%^%l%$] %v --%@");
 	DL_INFO("Starting Application");
 	Window* window = new Window();
 	window->RunGame();
 	delete window;
-	DL_WARN("Closing Application");
+	DL_INFO("Closing Application");
 	return 0;
 }
