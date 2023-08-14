@@ -12,10 +12,11 @@ project "PacMan"
 		"src",
 		"src/ThirdParties/glfw-3.3.8/include",
 		"src/ThirdParties/spdlog-1.12.0/include",
-		"src/ThirdParties/glad/include"
+		"src/ThirdParties/glad/include",
+		"src/ThirdParties/stbImage"
 	}
 	libdirs{
-		"src/ThirdParties/glfw-3.3.8/lib-vc2022"
+		"src/ThirdParties/glfw-3.3.8/lib-vc2019"
 	}
 	links{
 		"glfw3.lib",

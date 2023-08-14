@@ -13,7 +13,15 @@ private:
 struct Vertex {
 	Vertex(float x, float y, float z, float tx, float ty, int textID);
 
-	float x, y, z;
-	float tx, ty;
+	float pos[3];
+	float tex[2];
 	int textureID;
+
+
+	float& x = pos[0];
+	float& y = pos[1];
+	float& z = pos[2];
+	float& tx = tex[0];
+	float& ty = tex[1];
+
 };

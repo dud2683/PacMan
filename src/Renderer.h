@@ -4,6 +4,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Rendering/Sprite.h"
+#include "Rendering/Shader.h"
 
 class Renderer {
 public:
@@ -11,10 +12,11 @@ public:
 	Renderer(Renderer& renderer) = delete;
 	~Renderer();
 
-	void UpdateDisplay();
+	void ResetDisplay();
 
 	void AddSprite(float xpos, float ypos, float width, float height, int textureID);
-
+	void AddTriangle();
+	void ReloadShaders();
 private:
 	void Init();
 	void ParseShaders();
@@ -26,10 +28,7 @@ private:
 			1, 2, 3
 	};
 
-	const std::string _shaders[2] = {
-		"src/Rendering/sprite.vtx.glsl",
-		"src/Rendering/sprite.vtx.glsl"
-	};
-
+	//Shader _sprite{ "src/Rendering/sprite.vtx.glsl", "src/Rendering/sprite.frg.glsl" };
+	Shader _test{ "src/Rendering/test.vtx.glsl", "src/Rendering/test.frg.glsl" };
 
 };

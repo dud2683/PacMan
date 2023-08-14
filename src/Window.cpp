@@ -1,20 +1,20 @@
 #include "Window.h"
+#include "InputHandler.h"
+
 void GLAPIENTRY
-MessageCallback(GLenum source,
-	GLenum type,
-	GLuint id,
-	GLenum severity,
-	GLsizei length,
-	const GLchar* message,
-	const void* userParam)
+MessageCallback(int errorCode, const char* message)
 {
 	DL_ERROR(*message);
 }
 
+
 Window::Window() {
+	
+
 	if (!glfwInit()) {
 		DL_ERROR("GLFW init failed!");
 	}
+	
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -22,14 +22,19 @@ Window::Window() {
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
 	_glfwWnd = glfwCreateWindow(_screenWidth, _screenHeight, "PacMan", NULL, NULL);
+
+
 	glfwMakeContextCurrent(_glfwWnd);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		DL_ERROR("Failed to initialize GLAD");
 	}
 
-	_game = std::make_unique<Game>();
+	glfwSetErrorCallback(MessageCallback);
 
+	glViewport(0, 0, _screenWidth, _screenHeight);
+
+	_game = std::make_unique<Game>(_glfwWnd);
 }
 
 Window::~Window() {
@@ -51,10 +56,11 @@ void Window::RunGame() {
 	while (!glfwWindowShouldClose(_glfwWnd)) {
 		//We only have to worry about the target computer being to fast.
 		end = Clock::now();
+		delta = end - start;
 		if (delta >= _minTimePerFrame) {
-			glfwSwapBuffers(_glfwWnd);
 			glfwPollEvents();
 			_game->Update(delta);
+			glfwSwapBuffers(_glfwWnd);
 			processedFrame = true;
 		}
 		if (processedFrame) {
@@ -62,6 +68,5 @@ void Window::RunGame() {
 			processedFrame = false;
 		}
 
-		delta = end - start;
 	}
 }

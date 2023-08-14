@@ -1,8 +1,8 @@
 #version 330 core
 in vec2 texPos;
 in int textID;
-out vec4 FragColour;
+out vec4 FragColor;
 
 void main(){
-	FragColour = vec4 (1.0);
+	FragColor = vec4 (0.8);
 }

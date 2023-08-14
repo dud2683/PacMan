@@ -5,8 +5,9 @@
 
 class Game {
 public:
-	Game();
+	Game(GLFWwindow* wnd);
 	void Update(std::chrono::nanoseconds);
+	void ReloadShaders();
 
 private:
 	void UpdateState(std::chrono::nanoseconds timestep);
