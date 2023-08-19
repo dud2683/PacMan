@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "InputHandler.h"
 
 void GLAPIENTRY
 MessageCallback(int errorCode, const char* message)

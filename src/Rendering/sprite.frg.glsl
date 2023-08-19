@@ -3,6 +3,8 @@ in vec2 texPos;
 in int textID;
 out vec4 FragColor;
 
+uniform sampler2D ourTexture;
+
 void main(){
-	FragColor = vec4 (0.8);
+	FragColor = texture(ourTexture, texPos);
 }
