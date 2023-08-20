@@ -12,6 +12,7 @@ public:
 private:
 	void UpdateState(std::chrono::nanoseconds timestep);
 	void Render();
+	void LoadSprites();
 
 	Ghost _ghosts;
 	const std::unique_ptr<Renderer> _renderer;

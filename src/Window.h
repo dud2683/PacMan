@@ -17,7 +17,7 @@ public:
 private:
 	GLFWwindow* _glfwWnd = nullptr;
 	std::shared_ptr<Game> _game = nullptr;
-	static constexpr int _resolutionMultiplier = 2;
+	static constexpr int _resolutionMultiplier = 3;
 	static constexpr int _baseWidth = 224;
 	static constexpr int _baseHeight = 288;
 	static constexpr int _screenWidth = _baseWidth * _resolutionMultiplier;

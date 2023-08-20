@@ -7,6 +7,8 @@ project "PacMan"
 	language "C++"
 	targetdir "_bin/%{cfg.buildcfg}"
 	objdir "_int-bin"
+	
+	cppdialect "C++20"
 	 
 	includedirs{
 		"src",

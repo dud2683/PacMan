@@ -4,10 +4,6 @@ SpriteSheet::SpriteSheet(std::string path){
 	int channels;
 	stbi_set_flip_vertically_on_load(true);
 	_data = stbi_load(path.c_str(), &_width, &_height, &channels, 4);
-	std::vector<unsigned char> buffer(_width * _height * channels);
-	for (int i = 0; i < _width * _height * channels; i++) {
-		buffer[i] = _data[i];
-	}
 	glGenTextures(1, &_texture);
 	glBindTexture(GL_TEXTURE_2D, _texture);
 
@@ -26,3 +22,4 @@ SpriteSheet::~SpriteSheet(){
 void SpriteSheet::Use(){
 	glBindTexture(GL_TEXTURE_2D, _texture);
 }
+

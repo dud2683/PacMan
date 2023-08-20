@@ -35,5 +35,9 @@ void Game::UpdateState(std::chrono::nanoseconds timestep) {
 
 void Game::Render() {
 	_renderer->ResetDisplay();
-	_renderer->AddTriangle();
+}
+
+void Game::LoadSprites(){
+	auto sheet1 = std::make_shared<SpriteSheet>("src/Rendering/SpriteSheet.png");
+
 }

@@ -11,10 +11,11 @@ public:
 	Shader(Shader& shader) = delete;
 	void Use();
 	~Shader();
-	void SetAttributes();
 	void Reload();
+	inline void SetAttributes(auto& function) { function(_VAO); }
 
 private:
+	void SetAttributes();
 	void CompileAndLink();
 
 	UINT _programID;
@@ -23,13 +24,6 @@ private:
 	UINT _indices[6] = {
 		0, 1, 3,
 		1, 2, 3
-	};
-
-	Vertex _vertexes[4] = {
-		{1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1},
-		{1.0f, -1.0f, 1.0f, 1.0f, 0.0f, 1 },
-		{-1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1},
-		{-1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1}
 	};
 
 	std::string _vtxPath, _frgPath;
