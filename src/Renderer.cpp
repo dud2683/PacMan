@@ -22,12 +22,12 @@ void Renderer::AddSprite(Sprite sprite)
 {
 	glfwTexVertex* cur = &(_buffer[_numSprites]);
 	for (int i = 0; i < 4; i++) {
-		cur[i].pos[0] = sprite.GetPos(i).first;
-		cur[i].pos[1] = sprite.GetPos(i).second;
+		cur[i].pos[0] = sprite.GetPos(i).x;
+		cur[i].pos[1] = sprite.GetPos(i).y;
 		cur[i].z = _zBuffer;
-		std::pair<float, float> textCoords = sprite.GetTex(i);
-		cur[i].tex[0] = textCoords.first;
-		cur[i].tex[1] = textCoords.second;
+		Pos<float> textCoords = sprite.GetTex(i);
+		cur[i].tex[0] = textCoords.x;
+		cur[i].tex[1] = textCoords.y;
 	}
 	_numSprites++;
 }

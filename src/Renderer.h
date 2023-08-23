@@ -45,5 +45,5 @@ private:
 
 	//Shader _sprite{ "src/Rendering/sprite.vtx.glsl", "src/Rendering/sprite.frg.glsl" };
 	Shader _spriteShader{ "src/Rendering/test.vtx.glsl", "src/Rendering/test.frg.glsl" };
-	SpriteSheet _sheet1{ "src/Rendering/Sprite_Sheet2.png" };
+	SpriteSheet _sheet1{ "src/Rendering/Sprites/Sprite_Sheet" };
 };

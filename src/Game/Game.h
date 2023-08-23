@@ -14,6 +14,6 @@ private:
 	void Render();
 	void LoadSprites();
 
-	Ghost _ghosts;
-	const std::unique_ptr<Renderer> _renderer;
+	std::vector<std::unique_ptr<Entity>> _ents;
+	const std::unique_ptr<Renderer> _renderer;	
 };

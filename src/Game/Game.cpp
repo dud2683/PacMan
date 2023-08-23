@@ -38,6 +38,6 @@ void Game::Render() {
 }
 
 void Game::LoadSprites(){
-	auto sheet1 = std::make_shared<SpriteSheet>("src/Rendering/SpriteSheet.png");
+	auto sheet1 = std::make_shared<SpriteSheet>("src/Rendering/Sprites/SpriteSheet");
 
 }

@@ -16,7 +16,7 @@
 #include <memory>
 #include <chrono>
 #include <functional>
-
+#include "Pos.h"
 
 #define DL_INFO(x)	SPDLOG_INFO(x)
 #define DL_TRACE(x)	SPDLOG_TRACE(x)

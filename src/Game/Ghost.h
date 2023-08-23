@@ -1,6 +1,7 @@
 #pragma once
 #include "common.h"
-class Ghost {
+#include "Entity.h"
+class Ghost : public Entity {
 
 };
 
