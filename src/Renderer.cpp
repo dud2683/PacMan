@@ -1,3 +1,4 @@
+#include "common.h"
 #include "Renderer.h"
 
 
@@ -11,25 +12,26 @@ Renderer::~Renderer() {
 
 void Renderer::ResetDisplay() {
 
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	_numSprites=0;
 	_zBuffer = 0.0f;
 }
 
-
-void Renderer::AddSprite(Sprite sprite)
+void Renderer::AddSprite(const Sprite& sprite, const Pos<float>& pos0, const Pos<float>& pos1)
 {
-	glfwTexVertex* cur = &(_buffer[_numSprites]);
-	for (int i = 0; i < 4; i++) {
-		cur[i].pos[0] = sprite.GetPos(i).x;
-		cur[i].pos[1] = sprite.GetPos(i).y;
-		cur[i].z = _zBuffer;
-		Pos<float> textCoords = sprite.GetTex(i);
-		cur[i].tex[0] = textCoords.x;
-		cur[i].tex[1] = textCoords.y;
-	}
+	auto current = &(_spriteBuffer[_numSprites * 4]);
+	current[0] = { {pos0.x, pos0.y, _zBuffer}, {sprite.GetTex(0)} };
+	current[1] = { {pos1.x, pos0.y, _zBuffer}, {sprite.GetTex(1)} };
+	current[2] = { {pos1.x, pos1.y, _zBuffer}, {sprite.GetTex(2)} };
+	current[3] = { {pos0.x, pos1.y, _zBuffer}, {sprite.GetTex(3)} };
+	_zBuffer += 1/8.0f;
 	_numSprites++;
+}
+
+void Renderer::AddSprite(const SpritePos& s)
+{
+	AddSprite(s.sprite, s.pos0, s.pos1);
 }
 
 void Renderer::ReloadShaders()
@@ -37,9 +39,11 @@ void Renderer::ReloadShaders()
 	_spriteShader.Reload();
 }
 
-void Renderer::Display()
+void Renderer::Draw()
 {
-	glBufferData(GL_ARRAY_BUFFER, sizeof(_buffer), _buffer, GL_DYNAMIC_DRAW);
+	_spriteShader.Use();
+	glBufferData(GL_ARRAY_BUFFER, sizeof(_spriteBuffer), _spriteBuffer, GL_DYNAMIC_DRAW);
+	glDrawElements(GL_TRIANGLES, _numSprites * 6, GL_UNSIGNED_INT, 0);
 }
 
 void Renderer::Init()

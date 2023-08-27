@@ -16,6 +16,7 @@ Game::Game(GLFWwindow* wnd) :
 	
 	};
 	glfwSetKeyCallback(wnd, callback);
+	LoadSprites();
 }
 
 void Game::Update(std::chrono::nanoseconds timestep) {
@@ -35,9 +36,14 @@ void Game::UpdateState(std::chrono::nanoseconds timestep) {
 
 void Game::Render() {
 	_renderer->ResetDisplay();
+	for (const auto& element : _background) {
+		_renderer->AddSprite(element);
+	}
+	_renderer->Draw();
 }
 
 void Game::LoadSprites(){
-	auto sheet1 = std::make_shared<SpriteSheet>("src/Rendering/Sprites/SpriteSheet");
-
+	std::shared_ptr<SpriteSheet> sheet1 = std::make_shared<SpriteSheet>("src/Rendering/Sprites/Sprite_Sheet");
+	SpritePos grid = { {sheet1, 0}, {-0.8f, -0.8f}, {0.8f, 0.8f} };
+	_background.push_back(grid);
 }

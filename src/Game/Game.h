@@ -1,7 +1,6 @@
 #pragma once
 #include "Ghost.h"
 #include "Renderer.h"
-#include "common.h"
 
 class Game {
 public:
@@ -15,5 +14,7 @@ private:
 	void LoadSprites();
 
 	std::vector<std::unique_ptr<Entity>> _ents;
+	std::vector<SpritePos> _background;
+	
 	const std::unique_ptr<Renderer> _renderer;	
 };

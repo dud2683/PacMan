@@ -26,7 +26,6 @@
 #define GL_SHADER_CHECK(shaderID) \
 	{\
 	int  success;\
-	char infoLog[512];\
 	glGetShaderiv(shaderID, GL_COMPILE_STATUS, &success);\
 	if (!success) {\
 		int maxLength = 0;\

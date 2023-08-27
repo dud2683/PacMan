@@ -10,6 +10,10 @@ project "PacMan"
 	
 	cppdialect "C++20"
 	 
+	pchheader "common.h"
+	pchsource "%{prj.location}/src/common.cpp"
+	
+	
 	includedirs{
 		"src",
 		"src/ThirdParties/glfw-3.3.8/include",
@@ -25,6 +29,9 @@ project "PacMan"
 		"opengl32.lib"
 	}
 	files { "src/**.h", "src/**.cpp", "src/**.c", "src/**.txt" }
+
+	filter "files:**.c"
+		flags {"NoPCH"}
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }

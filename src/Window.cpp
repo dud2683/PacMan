@@ -1,3 +1,4 @@
+#include "common.h"
 #include "Window.h"
 
 void GLAPIENTRY
@@ -32,6 +33,7 @@ Window::Window() {
 	glfwSetErrorCallback(MessageCallback);
 
 	glViewport(0, 0, _screenWidth, _screenHeight);
+	//glm::mat4 projection = glm::ortho(0.0f, _baseWidth,0.0f, _baseHeight, 0.0f, -1.0f, 1.0f);
 
 	_game = std::make_unique<Game>(_glfwWnd);
 }

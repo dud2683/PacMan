@@ -1,3 +1,4 @@
+#include "common.h"
 #include "Shader.h"
 
 Shader::Shader(std::string vtxpath, std::string frgpath):

@@ -1,5 +1,5 @@
+#include "common.h"
 #include "Map.h"
-#include <fstream>
 
 void Map::LoadFromFile(std::string filename)
 {

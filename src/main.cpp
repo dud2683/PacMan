@@ -1,6 +1,6 @@
+#include "common.h"
 #include <iostream>
 #include "Window.h"
-#include "common.h"
 
 
 int main() {

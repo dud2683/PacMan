@@ -1,6 +1,4 @@
 #pragma once
-
-#include "common.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Rendering/Sprite.h"
@@ -9,10 +7,24 @@
 
 
 struct glfwTexVertex {
+	glfwTexVertex& operator= (const glfwTexVertex& other) {
+		pos[0] = other.pos[0];
+		pos[1] = other.pos[1];
+		pos[2] = other.pos[2];
+		tex = other.tex;
+		return *this;
+	}
 	float pos[3];
-	float tex[2];
+	Pos<float> tex;
 	float& z = pos[2];
 };
+
+struct SpritePos {
+	Sprite sprite;
+	Pos<float> pos0;
+	Pos<float> pos1;
+};
+
 class Renderer {
 public:
 	Renderer();
@@ -21,10 +33,11 @@ public:
 
 	void ResetDisplay();
 
-	void AddSprite(Sprite sprite);
+	void AddSprite(const Sprite& sprite, const Pos<float>& pos0, const Pos<float>& pos1);
+	void AddSprite(const SpritePos& s);
 	void ReloadShaders();
 
-	void Display();
+	void Draw();
 private:
 	void Init();
 	void ParseShaders();
@@ -32,7 +45,7 @@ private:
 
 	float _zBuffer = 0.0f;
 	static constexpr UINT _eboIndexes[] = {
-			0, 1, 3,
+			0, 1, 2,
 			1, 2, 3
 	};
 	
@@ -40,10 +53,6 @@ private:
 	
 	UINT _numSprites = 0;
 
-	glfwTexVertex _buffer[4 * _maxSprites];
-
-
-	//Shader _sprite{ "src/Rendering/sprite.vtx.glsl", "src/Rendering/sprite.frg.glsl" };
+	glfwTexVertex _spriteBuffer[4 * _maxSprites];
 	Shader _spriteShader{ "src/Rendering/test.vtx.glsl", "src/Rendering/test.frg.glsl" };
-	SpriteSheet _sheet1{ "src/Rendering/Sprites/Sprite_Sheet" };
 };
